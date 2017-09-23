@@ -30,3 +30,11 @@ fancyRpartPlot(fit)
 
 prediction = predict(fit, test, type = "class")
 submmit <- data.frame(PassengerId = test$PassengerId, Survived = prediction)
+
+
+fit <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked,
+               data=train,
+               method="class", 
+               control=rpart.control(minsplit=2, cp=0))
+fancyRpartPlot(fit)
+
